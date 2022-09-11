@@ -1,0 +1,77 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:views="clr-namespace:LASCreator.Views"
+        xmlns:vm="using:LASCreator.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
+        x:Class="LASCreator.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="LAS Creator 1.0.0"
+	    TransparencyLevelHint="AcrylicBlur"
+	    Background="Transparent"
+		ExtendClientAreaToDecorationsHint="True">
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<Panel>
+		<ExperimentalAcrylicBorder IsHitTestVisible="False">
+			<ExperimentalAcrylicBorder.Material>
+				<ExperimentalAcrylicMaterial
+					BackgroundSource="Digger"
+					TintColor="Black"
+					TintOpacity="1"
+					MaterialOpacity="0.4" />
+			</ExperimentalAcrylicBorder.Material>
+		</ExperimentalAcrylicBorder>
+
+		<Panel x:Name="Main">
+			<DockPanel>
+				<Panel DockPanel.Dock="Top">
+					<Rectangle x:Name="TitleBar" IsHitTestVisible="False" Fill="LightBlue" Opacity="0.3" Height="30"/>
+					<TextBlock FontSize="14" Margin="5,0,0,0" IsHitTestVisible="False" Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=Title}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+				</Panel>
+
+				<DockPanel Margin="5" DockPanel.Dock="Bottom">
+					<StackPanel Spacing="5" Width="280">
+						<views:BetterTextBox x:Name="InternalName" BetterName="Internal Name" BetterWatermark="example_character"/>
+						<views:BetterTextBox x:Name="OutfitName" BetterName="Outfit Name" BetterWatermark="Example Character"/>
+						<views:BetterTextBox x:Name="OutfitDescription" BetterName="Outfit Description" BetterWatermark="Example description.\n\nSecond line."/>
+						<views:BetterTextBox x:Name="ModName" BetterName="Mod Name" BetterWatermark="Example Character [LAS]"/>
+						<views:BetterOpenFile x:Name="TppModel" BetterName="Character TPP Model"/>
+						<views:BetterTextBox x:Name="TppObjects" BetterName="TPP Model Objects" BetterWatermark="g_body,g_head,g_hands"/>
+						<views:BetterOpenFile x:Name="FppModel" BetterName="Character FPP Model (optional)"/>
+						<views:BetterTextBox x:Name="FppObjects" BetterName="FPP Model Objects (optional)" BetterWatermark="g_body,g_head,g_hands"/>
+						<views:BetterOpenFile x:Name="Icon" BetterName="Icon Image (optional)"/>
+						<views:BetterOpenFolder x:Name="SaveTo" BetterName="Save To"/>
+						<Button x:Name="CreateButton" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Create}" HorizontalAlignment="Stretch">
+							<Button.Styles>
+								<Style Selector="Button">
+									<Setter Property="Background">
+										<SolidColorBrush Color="Black" Opacity="0.5"/>
+									</Setter>
+								</Style>
+							</Button.Styles>
+							<TextBlock Text="Create" TextAlignment="Center"></TextBlock>
+						</Button>
+					</StackPanel>
+					<ScrollViewer Margin="5,0,0,0" AllowAutoHide="False" VerticalScrollBarVisibility="3">
+						<StackPanel Margin="0,0,20,0" x:Name="MaterialsList" Spacing="5">
+							<Button Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Add}" HorizontalAlignment="Stretch">
+								<Button.Styles>
+									<Style Selector="Button">
+										<Setter Property="Background">
+											<SolidColorBrush Color="Black" Opacity="0.5"/>
+										</Setter>
+									</Style>
+								</Button.Styles>
+								<TextBlock Text="Add new material" TextAlignment="Center"></TextBlock>
+							</Button>
+						</StackPanel>
+					</ScrollViewer>
+				</DockPanel>
+			</DockPanel>
+		</Panel>
+	</Panel>
+</Window>

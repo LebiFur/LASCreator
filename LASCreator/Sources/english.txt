@@ -1,0 +1,5 @@
+{{
+"bm_menu_{0}_armor_skins": "{1}",
+"bm_askn_{0}" : "{1}",
+"bm_askn_{0}_desc" : "{2}"
+}}

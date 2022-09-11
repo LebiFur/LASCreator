@@ -1,0 +1,41 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:views="clr-namespace:LASCreator.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="100"
+             x:Class="LASCreator.Views.Material">
+	<Panel>
+		<Border Background="Black" Opacity="0.2" CornerRadius="4"/>
+		<DockPanel Margin="5">
+			<Panel DockPanel.Dock="Top">
+				<StackPanel Spacing="8" Orientation="Horizontal" HorizontalAlignment="Left">
+				<TextBlock x:Name="Title" Text="Material" Opacity="1" IsHitTestVisible="False"/>
+					<Panel Height="16">
+						<CheckBox x:Name="FppCheck">
+							FPP
+						</CheckBox>
+					</Panel>
+				</StackPanel>
+				<Button Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=Close}" Width="16" Height="16" HorizontalAlignment="Right">
+					<Button.Styles>
+						<Style Selector="Button">
+							<Setter Property="Background">
+								<SolidColorBrush Color="Black" Opacity="0.5"/>
+							</Setter>
+							<Setter Property="Padding" Value="0"/>
+						</Style>
+					</Button.Styles>
+					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="X" FontSize="12" TextAlignment="Center"/>
+				</Button>
+			</Panel>
+
+			<Grid Margin="0,5,0,0" ColumnDefinitions="*,*,*,*">
+				<views:BetterTextBox x:Name="MaterialName" Margin="0,0,5,0" BetterName="Name" Grid.Column="0"/>
+				<views:BetterOpenFile x:Name="MaterialDiffuse" Margin="0,0,5,0" BetterName="Diffuse Map" Grid.Column="1"/>
+				<views:BetterOpenFile x:Name="MaterialNormal" Margin="0,0,5,0" BetterName="Normal Map (optional)" Grid.Column="2"/>
+				<views:BetterOpenFile x:Name="MaterialIllumination" BetterName="Illumination Map (optional)" Grid.Column="3"/>
+			</Grid>
+		</DockPanel>
+	</Panel>
+</UserControl>

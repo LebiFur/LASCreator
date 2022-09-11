@@ -1,0 +1,11 @@
+﻿<table name="{0}" image="{1}">
+<Localization directory="localization" default="english.txt"/>
+
+<Hooks directory="Hooks">
+<hook file="hook.lua" source_file="lib/tweak_data/armorskinstweakdata"/>
+</Hooks>
+
+<AddFiles directory="assets">
+{2}
+</AddFiles>
+</table>

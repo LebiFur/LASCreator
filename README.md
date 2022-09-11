@@ -2,6 +2,8 @@
 
 A straightforward tool for creating PAYDAY 2 Legendary Armour Skins mods.
 
+Requires .NET 6.0 Runtime
+
 ## Usage
 
 All textures are .dds files
